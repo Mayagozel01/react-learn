@@ -3,11 +3,31 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { ThemeProvider, createGlobalStyle } from 'styled-components';
+
+
+const theme = {
+  colors: {
+    background_1: '#682c30',
+  },
+};
+
+{/* Global stilleri doretmek yokarda styled componentden import etmeli*/}
+const Global = createGlobalStyle`
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}`
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
+    <Global/>   {/* Global stilleri goshmak */}
+    <ThemeProvider theme={theme}>
     <App />
+    </ThemeProvider>
   </React.StrictMode>
 );
 
